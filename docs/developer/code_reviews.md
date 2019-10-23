@@ -95,4 +95,7 @@ At the end of the day you must ask yourself **"** *will this code break anything
 
 ### After the Code Review 
 Generally after a code review the developer will implement your suggestions/comments or pushback. If there is pushback following these guidelines:
-
+1. Try to understand their point of view, remember it is their code 
+2. If something needs to be addressed, explain your reasoning and suggestion possible solutions
+3. Stay polite
+4. Take it offline if the discussion is not moving anywhere 

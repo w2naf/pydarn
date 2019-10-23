@@ -20,7 +20,7 @@ pyDARN is a collaborative library developed by engineers, scientists, and progra
 
 Code changes are to be present in pull requests that are to be reviewed (see [Code Review](developers/code_review.md)) and tested by another developer before being merged. All additional features need to include unit and integration tests. **Non-tested code is broken code** and will not be merged. 
 
-See [Code Style Guidelines](developers/code_style_guidelines.md) and [Testing Guidelines](developers/testing_guidelines.md) for requirements on code style and testing guidelines. 
+See [Code Style Guidelines](code_guide.md) and [Testing Guidelines](developers/testing_guidelines.md) for requirements on code style and testing guidelines. 
 
 ## Naming branches 
 

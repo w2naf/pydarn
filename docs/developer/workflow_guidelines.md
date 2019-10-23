@@ -1,31 +1,86 @@
 # Workflow 
 
-In pyDARN, all additive code whether it is a *bug fix* or *enhancement* must be merged into pyDARN via a **pull request**. 
-Before creating a new branch or submitting a pull request, please make sure the following guidelines are met:
-- [code style](developers/code_guide.md)
-- [documentation guidelines](developer/)
+In pyDARN, all additive code whether it is a *bug fix* or *enhancement* must flow the general workflow and merged via a **pull request**.
+Special workflows include: 
+  - HotFixes 
+  - Release 
+Please see [release guidelines](developer/release_guide.md) to get more information on these two special cases. 
 
-## Pull Requests 
+## General workflow
+General workflow will follow the following steps:
+1. Create an **Issue** if necessary. New features already planned out or quick bug fixes don't always need an **Issue**
+2. 
+- Create a branch for your code changes following the branch naming convention mentioned below
+- Ensure your code meets the following guidelines:
+    - [code style](developer/code_style.md)
+    - [testing](developer/testing_guide.md)
+- Create a **Pull Request** merging either into a *parent branch* or *develop*
+- Add your 
+- Follow [pull request](developer/pull_request_issues.md) and [code review](code_review_guidelines.md) guidelines
+- Merge **pull request** 
 
-Pull requests are completed when a completed section of code/functionality/module or simple fix is done on separate branch that is not *develop* or *master*. 
-Completed referring to: 
-- Tested (see [testing guidelines](developers/testing_guide.md))
-- Documented (see [documentation guidelines](developers/documentation_guide.md))
+### Branch Workflow
+Depending on the purpose of the code the nomenclature and workflow of the branching will change, however, every branch has to at least include the module name in it. 
+Avoid using special characters except underscores to keep things consistent. 
+Types of branches and their nomenclature:
+- **Bug fix**: `<module>/<problem>_fix`. 
+    Example: `RTP/overlapping_fix`, `superdarn/RAWACF_Format_fix`
+- **HotFix**: `<module>/<problem>_HOTFIX`
+    Example: `RTP/time_series_HOTFIX`
+- **Enhancement**: `<module>/<enhancement name>` or `<module>/<enhancement>_update`
+    Example: `Dmap/seek_method`
+- **Deprecation**: `<package or module>/<what is being deprecated>_Deprecated`
+    Example: `IO/dmap_Deprecated`, `Dmap/test_integrity_Deprecated`
+- **Feature** depending on the new feature if it is only a new method/function then: `<module>/<feature name>` or `<module>/<feature name>_new` 
+    Example: `utils/dmap2dict_new`, the new option is if you want to separate it from a enhancement. Please see Feature workflow below for more details on new modules or packages. 
+- **Documentation**: `doc/<documentation being updated>`
+    Example: `doc/dmap_tutorial`, `doc/borealis_typo`
 
-A pull request is [created](https://github.com/SuperDARN/pydarn/pulls) via clicking on **New pull request** and following the guidelines below. 
-Once a pull request is created, [travis-CI](https://docs.travis-ci.com/user/tutorial/) will be invoked and will run the following tests:
-- macosx, linux, and windows builds for python 3.5+ (Due to python 2.7 being deprecated in 2020, we will not support any python version lower than 3.5)
-- testing scripts **yet to be implemented** 
-- test coverage **yet to be implemented**
-- profiling/benchmarking **future possibility** 
-- python style checkers
-  - [flake8](http://flake8.pycqa.org/en/latest/): PEP8 style checker for python
-  - [MyPy](https://mypy.readthedocs.io/en/latest/introduction.html): python type checker
+!!! Note: 
+    Module is the file name your code changes are in and package is the folder the code files reside in. If your code changes are in more than one file, you can also use the package name. 
 
-### Guidelines of Pull Request
-The following guidelines are required for the pull request to be approved and the section of code to be accepted.
-1. Any non-release branches must be merged into `develop` or another side-branch. Documentation based branches can be merged into `master` if referencing a typo, or further clarification in the current release. [HOT Fixes](developers/release_guidelines.md) still need to be merged to `develop` but will prompt a patch fix release of the current status of `develop`. 
-2. Pull request titles: ensure the title of your pull request is **meaningful**. If your pull request is deemed **HOT Fix** worthy from *issue* conversation then put that in the title. 
-3. Description: make sure the user understands where this pull request is coming from (i.e., referencing issues or common functionality requests). The current status and any limitations the code does not consider. And how to test your code, give some example code and expected results for the reviewers of your pull request. 
-4. Reviewer requesting: at least two reviewers must be requested (of your choice) or a call out to anyone who wants to test your code. One reviewer you pick can be the code reviewer. The code reviewers responsibility is to do a code review on the code (please review [code review guidelines](develoepers/code_reviews.md)). The other reviewer will test your code. However, other reviewers can test/code review the pull request and one reviewer can do both jobs. 
-5. No cowboy coding: This means you cannot merge your own pull request. One of the reviewers or members of the pyDARN community can merge your code in. However, it is preferred that one of the reviewers merges it. Pings on the pull request can be made to try and get the attention of the reviewers and others to help speed up a pull request. 
+### Feature Workflow
+Features can be larger than simple new methods/functions where enhancements are confined to updated code or new methods/functions that can enhance the class functionality. 
+Features are a new building block to the library and may require multiple branches. The general feature workflow should follow these steps:
+1. Determine the main scope of your new feature this will contribute to your *parent branch* 
+    - Nomenclature for a *parent branch*: `<feature or package name>`, if it is a new module then `<package>/new_<module>`
+2. Divide that scope up into smaller chunks, this may follow modules, classes, or main methods. This breakdown will contribute to *children branches*.
+    - Nomenclature for *child branch*: `<feature or new name module>/<sub task, class, module, method/function>` 
+3. If the child scope is too big still divide it up again following step 2. 
+4. If any enhancements comes from the above branches, break off accordingly and name based on enhancement nomenclature. 
+
+Each *child branch* will get its own **pull request** into the *parent branch* this ensures smaller scope for code reviews and continuous development on a feature.
+Once all *child branches* are merged into the *parent branch* and the *parent branch* is retested then the developer can create a **pull request** to be merged into `develop`.
+
+### Pull Request Workflow
+Once code changes are made, tested and checked it follows the code style for pyDARN then a **pull request** can be made. If none of those conditions are met then the **pull request** will be closed until the developer meets the condition. This is to ensure minimal time during code reviews and testing and avoid spamming of commit messages on the **pull request**. 
+
+As mentioned in the branch workflow section all branches except *child branches*, **HOTFIXES**, *release*, and some *documentation* branches are merged to `develop`. For the exceptions:
+- *child branch* --> *parent branch*
+- **HOTFIXES** --> `master`
+- *release* --> `master`
+- *documentation* --> `master` if updating the release documentation, newer documentation updates go to `develop`
+
+See [Pull Requests](developer/pull_request_issues_guide.md) for more details on creating a pull request and guidelines to follow. 
+
+Then the workflow should be as follows:
+1. Request reviewers and testers 
+-  Change/review any comments or bugs in the code reviewers find. See [code review guidelines](developer/code_review_guide.md) for more information on code reviews. 
+- Then one of the community members can merge the **pull request** 
+
+## Special Workflows 
+Similar to the general workflow *release* and *HotFixes* have slightly different workflows. 
+### Release 
+1. Create a project on GitHub for the type of release. See [release guidelines](develop/release_guide.md)
+2. Once the project to do list is complete create a branch from `develop` for the beta release
+3. Then repeat setp 2 for release candidate if necessary 
+4. Following the setps in [release guidelines](develop/release_guide,md) to merging the release branch into `master`
+
+### HOTFIX 
+Hotfixes are a special type of branch where there is a **major** but in the current release that needs to be fixed. These merges do not always require a version number change but if it does it will be considered a *path* number. The workflow will be as follow:
+1. Create **HOTFIX** branch based on the bug 
+2. Test the branch then merge to `master`
+3. Update any documentation or release artifacts if major enough
+
+### Documentation Workflow
+Documentation can always be improved with better example, more concise explanations and new guidelines. When creating a **pull request** the branch can be merged in `master` or `develop` depending what was changes. If the documentation on touches on current release information and will be improving it then it can be merged to `master`. However, if it contains any thing new to the current release or will be enforced in the next release for guidelines then it should be merged to `develop`. 

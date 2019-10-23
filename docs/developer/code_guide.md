@@ -33,6 +33,8 @@ pyDARN follows the following stylistic choices (these can be reviewed at anytime
 #### Code
 
 1. Follows [PEP 8](https://www.python.org/dev/peps/pep-0008/) style for python code 
+- Replace tabs with 4 spaces
+- Develop for python 3.5 and higher, avoid backwards compatibility
 - `__init__.py` should be empty except at the base of the library
 - Reference any papers/articles/resources regarding algorithms and equations
 - If constants are needed define in a shared module and not internally to the code
@@ -100,6 +102,7 @@ pyDARN follows the following stylistic choices (these can be reviewed at anytime
 - Copyright documentation, see [copyrights and licensing](developer/copyrights_licensing.md)
 - Follow documentation [workflow](developer/workflow_guide.md) 
 
-
-
+#### Other Resources 
+- More python code style guidelines: [Code Style](https://docs.python-guide.org/writing/style/)
+- Install [flake8](http://flake8.pycqa.org/en/latest/) into your text editor 
 
