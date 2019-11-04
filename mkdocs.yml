@@ -5,6 +5,10 @@ markdown_extensions:
     - extra
     - admonition
     - toc
+plugins:
+    - markdownmermaid
+extra_javascript:
+    - https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js
 
 nav:
     - Home: index.md
