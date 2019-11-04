@@ -8,7 +8,7 @@ This section generally covers development in pydarn and guidelines that should b
 
 ## Communication and Teleconferences 
 
-pyDARN is a collaborative, and constructive group that discourages any toxic or negative behaviour. If toxic or negative behaviour is observed then that person will be removed from the developers/contributors group. Please read [Communication Guidelines](developers/communication.guidelines) to ensure you are keeping pyDARN a collaborative and constructive group. 
+pyDARN is a collaborative, and constructive group that discourages any toxic or negative behaviour. If toxic or negative behaviour is observed then that person will be removed from the developers/contributors group. Please read [Communication Guidelines](communication_guide.md) to ensure you are keeping pyDARN a collaborative and constructive group. 
 
 Teleconferences, will be held at least once a year if not more when needed. An agenda will be drafted on the developers team chat and followed in the teleconference. The teleconference will focus on higher level topics that need further discussion either brought up by members or *Issues* and *Pull Requests*. If time allows a **RICE** (Reach, Impact, Confidence, Effort) to help score and refocus the group on important *Issues* and *Pull Requests* and future directions. Other topics that will be typically discussed in the teleconferences will include projects, milestones and new releases on pyDARN. 
 
@@ -18,9 +18,9 @@ Other forms of communication in pyDARN is our slack group, please contact Marina
 
 pyDARN is a collaborative library developed by engineers, scientists, and programmers, thus all significant code decisions will be discussed in the pyDARN developer team chat on GitHub and may be discussed in teleconference (if needed). 
 
-Code changes are to be present in pull requests that are to be reviewed (see [Code Review](developers/code_review.md)) and tested by another developer before being merged. All additional features need to include unit and integration tests. **Non-tested code is broken code** and will not be merged. 
+Code changes are to be present in pull requests that are to be reviewed (see [Code Review](code_reviews.md)) and tested by another developer before being merged. All additional features need to include unit and integration tests. **Non-tested code is broken code** and will not be merged. 
 
-See [Code Style Guidelines](code_guide.md) and [Testing Guidelines](developers/testing_guidelines.md) for requirements on code style and testing guidelines. 
+See [Code Style Guidelines](code_guide.md) and [Testing Guidelines](testing_guide.md) for requirements on code style and testing guidelines. 
 
 ## Naming branches 
 
@@ -33,7 +33,7 @@ When creating a new branch on pyDARN use the following nomenclature:
 - `Fix/<name of the fix>`: Less higher-priority or difficult type of fix to a bug/error 
 - `deprecation/<deleted package or module>`: Removing of a legacy feature(s) or out of scope feature
 
-See [Workflow Guidelines](developers/workflow_guidelines.md) and [Release Guidelines](release_guidelines.md) for more details on branch workflow and release guidelines. 
+See [Workflow Guidelines](workflow_guide.md) and [Release Guidelines](release_guide.md) for more details on branch workflow and release guidelines. 
 
 ## Labels and Milestones 
 
@@ -44,8 +44,8 @@ Other examples of labels: `high-priority`, `low-priority`, `discussion`, `need h
 
 Milestones are another way of labeling your *Issue* and *Pull Request* importance towards a release or tasks that need to be completed if it is a larger implementation. Please ask if you wish to add your *Issue* or *Pull Request* to a release Milestone. Due to limited developer resources and time, not all *Issues* or *Pull Requests* will make it into the next pyDARN releases. However, minor releases can be made so there is hope! 
 
-See [Issues and Pull Request Guidelines](developers/issue_PR_guidelines.md) for more details on *Issue* and *Pull Request* requirements. 
-See [Workflow Guidelines](developers/workflow_guidelines.md) for more details on create milestones in pyDARN. 
+See [Issues and Pull Request Guidelines](pull_request_issues_guide.md) for more details on *Issue* and *Pull Request* requirements. 
+See [Workflow Guidelines](workflow_guide.md) for more details on create milestones in pyDARN. 
 
 ## Pull Requests 
 
@@ -55,7 +55,7 @@ As mentioned before no *Pull Request* will be merged in by the author(s). Review
 
 The only exception is documentation updates based on `master` documentation. This is to fix any minor typos or clarity on installtion/usage guides. New feature documentation will be merged in with `develop`. 
 
-See [Issues and Pull Request Guidelines](developers/issue_PR_guidelines.md) for more details on *Issue* and *Pull Request* requirements. 
+See [Issues and Pull Request Guidelines](pull_request_issues_guide.md) for more details on *Issue* and *Pull Request* requirements. 
 
 
 ## Releases 
@@ -81,7 +81,7 @@ Currently senior developers are:
 - Angeline Burell 
 - Kevin Sterne 
 
-See [Release Guidelines](developer/release_guidelines.md) for more information on the release process of pyDARN. 
+See [Release Guidelines](release_guide.md) for more information on the release process of pyDARN. 
 
 ## Copyrights and Licensing
 
@@ -117,7 +117,7 @@ If you make modifications to the code that constitute you as an author (like bug
 
 In your code please make sure to cite any proprietary software used and articles that your code may be based off of. 
 
-See [Citing pyDARN](user/citing.md) for details on how to cite pyDARN in your own work. 
+See [Citing pyDARN](citing_guide.md) for details on how to cite pyDARN in your own work. 
 
 Data Object Identification (DOI) is a way for pyDARN to be cited in articles. The DOI is created by [zenodo](https://zenodo.org/) for every final release of pyDARN. 
 
@@ -131,4 +131,4 @@ Data Object Identification (DOI) is a way for pyDARN to be cited in articles. Th
  - not within scope 
  - no long supported functionality or legacy 
 
-See [Workflow Guidelines](developers/workflow_guidelines.md) for more information on how deprecations are processed in pyDARN. 
+See [Workflow Guidelines](workflow_guide.md) for more information on how deprecations are processed in pyDARN. 
