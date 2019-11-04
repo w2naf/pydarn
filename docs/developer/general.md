@@ -1,10 +1,8 @@
 # Developers Guide 
 
-pyDARN is an open-source package that is currently not affiliated with any specific SuperDARN working group but supported by SuperDARN collaborators. The scope of this library is to provide a flexible standard methods for visualizing SuperDARN data. 
-
-In the future IO operations will be removed from pyDARN and will become another library similar with any other functionalities that are not specific to data visualization. 
-
-This section generally covers development in pydarn and guidelines that should be followed be any contributors to the library. 
+pyDARN is an open-source package that is currently not affiliated with any specific SuperDARN working group but supported by SuperDARN collaborators. The scope of this library is to provide a flexible standard method for visualizing SuperDARN data.
+In the future, IO operations will be removed from pyDARN and will become another library similar to any other functionalities that are not specific to data visualization.
+This section generally covers development in pydarn and guidelines that should be followed by any contributors to the library.
 
 ## Communication and Teleconferences 
 
