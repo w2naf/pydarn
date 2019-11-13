@@ -5,6 +5,7 @@ Summary plot combines the pyDARN *RTP* method `plot_range_time` and
 plots may also be known as Range-Time Intesity (RTI) plots. This figure
 comprises of seven plots:
 
+
 | Plot Type | Fields plotted | Description |
 -----------------------------------------
 | time-series | `noise.search` and `noise.sky` | *Search Noise* and *Sky Noise* |
