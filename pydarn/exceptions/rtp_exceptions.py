@@ -49,6 +49,28 @@ class RTPNoDataFoundError(Exception):
         pydarn_log.error(self.message)
 
 
+class RTPInfinityError(Exception):
+    """
+    This error is raised when zmin or zmax is set to infinity causing
+    the colorbar scale to break
+    """
+    def __init__(self, parameter: str, beam_num: int, boundary: str,
+                 boundary_value: float):
+        self.parameter = parameter
+        self.beam_num = beam_num
+        self.boundary = boundary
+        self.boundary_value = boundary_value
+        self.message = "{boundary} is set to {value} for parameter {param}"\
+                " and beam number {beam}, please use zmin or zmax"\
+                " options to set lower or upper"\
+                " boundary.".format(boundary=self.boundary,
+                                    value=self.boundary_value,
+                                    param=self.parameter,
+                                    beam=self.beam_num)
+        super().__init__(self.message)
+        pydarn_log.error(self.message)
+
+
 class RTPZeroError(Exception):
     """
     Error raised when a ZeroDivisionError is raised due to minimum - maximum

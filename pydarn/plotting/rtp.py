@@ -251,7 +251,7 @@ class RTP():
                 diff_time = delta_diff_time.seconds/60.0
 
             # separation roughly 2 minutes
-            if diff_time > 2.0:
+            if diff_time > 3.0:
                 # if there is gap data (no data recorded past 2 minutes)
                 # then fill it in with white space
                 for _ in range(0, int(np.floor(diff_time/2.0))):
@@ -318,6 +318,12 @@ class RTP():
                                                      cls.dmap_data[0]['bmnum'])
         time_axis, y_axis = np.meshgrid(x, y)
         z_data = np.ma.masked_where(np.isnan(z.T), z.T)
+        if abs(zmin) == np.Inf:
+            raise rtp_exceptions.RTPInfinityError(parameter, beam_num,
+                                                  'zmin', zmin)
+        if abs(zmax) == np.Inf:
+            raise rtp_exceptions.RTPInfinityError(parameter, beam_num,
+                                                  'zmax', zmax)
         norm = norm(zmin, zmax)
         if isinstance(cmap, str):
             cmap = cm.get_cmap(cmap)
@@ -329,7 +335,7 @@ class RTP():
 
         # set the background color, this needs to happen to avoid
         # the overlapping problem that occurs
-        # cmap.set_bad(color=background, alpha=1.)
+        cmap.set_bad(color=background, alpha=1.)
         # plot!
         im = ax.pcolormesh(time_axis, y_axis, z_data, lw=0.01,
                            cmap=cmap, norm=norm, **kwargs)
@@ -369,10 +375,9 @@ class RTP():
                 warnings.filterwarnings('error')
                 try:
                     locator = ticker.MaxNLocator(symmetric=True, min_n_ticks=3,
-                                                 integer=True, nbins='auto')
+                                                 nbins='auto')
                     ticks = locator.tick_values(vmin=zmin, vmax=zmax)
                     cb = ax.figure.colorbar(im, ax=ax, extend='both', ticks=ticks)
-
                 except (ZeroDivisionError, Warning):
                     raise rtp_exceptions.RTPZeroError(parameter, beam_num, zmin,
                                                       zmax, norm) from None
