@@ -251,7 +251,7 @@ class RTP():
                 diff_time = delta_diff_time.seconds/60.0
 
             # separation roughly 2 minutes
-            if diff_time > 3.0:
+            if diff_time > 2.0:
                 # if there is gap data (no data recorded past 2 minutes)
                 # then fill it in with white space
                 for _ in range(0, int(np.floor(diff_time/2.0))):
