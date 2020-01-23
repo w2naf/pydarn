@@ -17,6 +17,8 @@ from .exceptions import dmap_exceptions
 from .exceptions import superdarn_exceptions
 from .exceptions import rtp_exceptions
 from .exceptions import borealis_exceptions
+from .exceptions.warning_formatting import standard_warning_format
+from .exceptions.warning_formatting import only_message_warning_format
 
 # Importing pydarn pydmap data structure classes
 from .io.datastructures import DmapScalar
@@ -24,27 +26,27 @@ from .io.datastructures import DmapArray
 from .io.datastructures import DmapRecord
 from .io import superdarn_formats
 
+# importing utils
+from .utils.conversions import dict2dmap
+from .utils.conversions import dmap2dict
+
 # Importing pydarn dmap classes
 from .io.dmap import DmapRead
 from .io.dmap import DmapWrite
 
 # Importing pydarn superdarn classes
-from .io.superdarn import DarnRead
-from .io.superdarn import DarnWrite
-from .io.superdarn import DarnUtilities
+from .io.superdarn import SDarnRead
+from .io.superdarn import SDarnWrite
+from .io.superdarn import SDarnUtilities
 
 # Importing pydarn borealis classes
 from .io.borealis import borealis_formats
 from .io.borealis.borealis import BorealisRead
 from .io.borealis.borealis import BorealisWrite
 from .io.borealis.borealis_convert import BorealisConvert
-from .io.borealis.bfiq_to_rawacf import BorealisBfiqToRawacfPostProcessor
-
-# importing utils
-from .utils.conversions import dict2dmap
-from .utils.conversions import dmap2dict
 
 # import plotting
+from .plotting.color_maps import PyDARNColormaps
 from .plotting.superdarn_radars import SuperDARNRadars
 from .plotting.superdarn_cpid import SuperDARNCpids
 from .plotting.rtp import RTP
