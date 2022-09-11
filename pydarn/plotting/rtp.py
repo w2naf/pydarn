@@ -489,24 +489,17 @@ class RTP():
 
         # create color bar if True
         if not colorbar:
-            with warnings.catch_warnings():
-                warnings.filterwarnings('error')
-                try:
-                    if isinstance(norm, colors.LogNorm):
-                        cb = ax.figure.colorbar(im, ax=ax, extend='both')
-                    else:
-                        locator = ticker.MaxNLocator(symmetric=True,
-                                                     min_n_ticks=3,
-                                                     integer=True,
-                                                     nbins='auto')
-                        ticks = locator.tick_values(vmin=zmin, vmax=zmax)
-                        cb = ax.figure.colorbar(im, ax=ax, extend='both',
-                                                ticks=ticks)
+            if isinstance(norm, colors.LogNorm):
+                cb = ax.figure.colorbar(im, ax=ax, extend='both')
+            else:
+                locator = ticker.MaxNLocator(symmetric=True,
+                                             min_n_ticks=3,
+                                             integer=True,
+                                             nbins='auto')
+                ticks = locator.tick_values(vmin=zmin, vmax=zmax)
+                cb = ax.figure.colorbar(im, ax=ax, extend='both',
+                                        ticks=ticks)
 
-                except (ZeroDivisionError, Warning):
-                    raise rtp_exceptions.RTPZeroError(parameter, beam_num,
-                                                      zmin, zmax,
-                                                      norm) from None
         if colorbar_label != '':
             cb.set_label(colorbar_label)
         return im, cb, cmap, x, y, z_data
